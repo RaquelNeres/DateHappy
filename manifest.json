@@ -1,0 +1,45 @@
+{
+  "name": "DateHappy",
+  "description": "Um lembrete de suas datas favoritas",
+  "version": "1.0",
+  "manifest_version": 3,
+
+  "icons": {
+    "16": "images/icon_16.png",
+    "32": "images/icon_32.png",
+    "48": "images/icon_64.png",
+    "128": "images/icon_128.png"
+  }, 
+  
+  "permissions": [
+    "storage",
+    "unlimitedStorage"
+  ],
+  
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "images/icon_32.png"
+  },
+
+  "content_scripts": [
+    {
+      "js": ["scripts/content.js"],
+      "css": ["styles/content.css"],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+
+  "options_ui": {
+  "page": "options.html",
+  "open_in_tab": true
+  },
+
+  "web_accessible_resources": [
+    {
+      "resources": ["gifs/rena.gif"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/options.css">
+    <title>Pagina Web</title>
+</head>
+<body>
+    <img id="options" src="images/list.png"/>
+
+    <div style="display: none;" id="oculto">
+        <img src="images/icon_64.png"/>
+        <h2>Adicionar Evento</h2>
+        <h2>Excluir Evento</h2>
+        <h2>Modificar Evento</h2>
+    </div>
+
+    <h1 style="text-align: center;">📅 DateHappy</h1>
+
+    <h2>Add Data</h2>
+    <input type="date" id="date">
+
+    <label for="event">Escolha um evento:</label>
+    <input list="eventos" id="event" name="event">
+    <datalist id="eventos">
+        <option value="Casamento">
+        <option value="Aniversário">
+        <option value="Confraternização">
+        <option value="Feriado">
+        <option value="Ano Novo">
+        <option value="Natal">
+        <option value="Festa">
+    </datalist>
+
+    <button id="add">Adicionar</button>
+
+    <div id='calendar'></div>
+
+    <script src="scripts/index.global.min.js"></script>
+    <script src="scripts/fullcalendar.js"></script>
+    <script src="scripts/options.js" defer></script>
+</body>
+</html>
