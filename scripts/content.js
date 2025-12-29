@@ -1,4 +1,6 @@
 (function() {
+    let ultimaNotificacao = 0;
+
     verificarTodosEventos();
 
     function verificarTodosEventos() {
@@ -16,7 +18,7 @@
             const config = getNotificationConfig(event.title);
             if (config) {
                 const idNotificacao = `dia-${event.title}-${dataEvento.getDate()}`;
-                mostrarNotificacao(config, idNotificacao, config.tipo || 'esquerda-direita');
+                mostrarNotificacaoComDelay(config, idNotificacao, config.tipo || 'esquerda-direita');
             }
         }
         
@@ -43,19 +45,19 @@
         };
 
         if (diferencaMinutos >= 58 && diferencaMinutos <= 62) {
-            mostrarNotificacao({
+            mostrarNotificacaoComDelay({
                 ...configCoelho,
                 mensagem: `Falta 1 hora: ${event.title}`
             }, `hora-60-${event.title}`, 'fixo');
         }
         else if (diferencaMinutos >= 28 && diferencaMinutos <= 32) {
-            mostrarNotificacao({
+            mostrarNotificacaoComDelay({
                 ...configCoelho,
                 mensagem: `Corre! 30 min: ${event.title}`
             }, `hora-30-${event.title}`, 'fixo');
         }
         else if (diferencaMinutos >= -5 && diferencaMinutos <= 5) {
-             mostrarNotificacao({
+            mostrarNotificacaoComDelay({
                 ...configCoelho,
                 mensagem: `É AGORA: ${event.title}`,
                 cor: '#ff0000' 
@@ -68,7 +70,7 @@
         
         const configs = {
             'natal': { mensagem: 'Feliz Natal!', gif: 'rena.gif', tipo: 'direita-esquerda' },
-            'ano novo': { mensagem: 'Feliz Ano Novo!', gif: 'fogos.gif', tipo: 'esquerda-direita' },
+            'ano novo': { mensagem: 'Feliz Ano Novo!', gif: 'cat.gif', tipo: 'esquerda-direita' },
             'festa': { mensagem: 'Hora da Festa!', gif: 'cat.gif', tipo: 'esquerda-direita' },
             'pascoa': { mensagem: 'Feliz Páscoa!', gif: 'easter.gif', tipo: 'direita-esquerda'},
             'halloween': { mensagem: 'Feliz Halloween!', gif: 'abobora.gif', tipo: 'direita-esquerda'},
@@ -86,6 +88,21 @@
             gif: 'cat.gif',
             tipo: 'esquerda-direita'
         };
+    }
+
+    function mostrarNotificacaoComDelay(config, idUnico, tipo) {
+        const agora = Date.now();
+        const tempoDecorrido = agora - ultimaNotificacao;
+        
+        if (tempoDecorrido < 4000) {
+            setTimeout(() => {
+                mostrarNotificacao(config, idUnico, tipo);
+                ultimaNotificacao = Date.now();
+            }, 4000 - tempoDecorrido);
+        } else {
+            mostrarNotificacao(config, idUnico, tipo);
+            ultimaNotificacao = agora;
+        }
     }
 
     function mostrarNotificacao(config, idUnico, tipo) {
@@ -112,7 +129,7 @@
                 if (document.body.contains(runnerWrapper)) {
                     runnerWrapper.remove();
                 }
-            }, 10000); // 10 seg
+            }, 20000); // 10 seg
             
         } else if (tipo == 'mae'){
             runnerWrapper.className = 'event-mae-fixo';
@@ -135,11 +152,6 @@
         } else {
             runnerWrapper.className = 'event-notification-esquerda';
             
-            const notificacoesAtivas = document.querySelectorAll('.event-notification-esquerda');
-            const quantidade = notificacoesAtivas.length - 1;
-            const alturaBottom = 20 + (quantidade * 90);
-            runnerWrapper.style.bottom = `${alturaBottom}px`;
-            
             setTimeout(() => {
                 if (document.body.contains(runnerWrapper)) {
                     runnerWrapper.remove();
@@ -147,6 +159,7 @@
             }, 610000); // 10 min
         }
     }
+    
     // 5 min
     setInterval(verificarTodosEventos, 5 * 60 * 1000);
 })();

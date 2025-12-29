@@ -24,7 +24,7 @@ function loadEvents() {
         if (diasDif === 0) {
             if (containerHoje) {
                 const div = document.createElement('div');
-                div.textContent = event.title;
+                div.textContent = event.title + (event.allDay ? '' : ` (${new Date(event.start).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})})`);
                 containerHoje.appendChild(div);
             }
         } 
@@ -34,18 +34,18 @@ function loadEvents() {
                 let classe = '';
                 event.title = event.title.charAt(0).toUpperCase() + event.title.slice(1);
                 
-                if (event.title === 'Casamento') classe = 'modo-casamento';
-                else if (event.title === 'Aniversario') classe = 'modo-aniversario';
-                else if (event.title === 'Ano Novo') classe = 'modo-anonovo';
-                else if (event.title === 'Natal') classe = 'modo-natal';
-                else if (event.title === 'Halloween') classe = 'modo-halloween';
-                else if (event.title === 'Pascoa') classe = 'modo-pascoa';
-                else if (event.title === 'Dia das Maes') classe = 'modo-mae';
-                else if (event.title === 'Dia dos Pais') classe = 'modo-pai';
-                else if (event.title === 'Carnaval') classe = 'modo-carnaval';
-                else if (event.title === 'Confraternização') classe = 'evento-confraternizacao';
-                else if (event.title === 'Festa') classe = 'evento-festa';
-                else if (event.title === 'Feriado') classe = 'evento-feriado';
+                if (event.title.includes('Casamento')) classe = 'modo-casamento';
+                else if (event.title.includes('Aniversario')) classe = 'modo-aniversario';
+                else if (event.title.includes('Ano Novo')) classe = 'modo-anonovo';
+                else if (event.title.includes('Natal')) classe = 'modo-natal';
+                else if (event.title.includes('Halloween')) classe = 'modo-halloween';
+                else if (event.title.includes('Pascoa')) classe = 'modo-pascoa';
+                else if (event.title.includes('Dia das Maes')) classe = 'modo-mae';
+                else if (event.title.includes('Dia dos Pais')) classe = 'modo-pai';
+                else if (event.title.includes('Carnaval')) classe = 'modo-carnaval';
+                else if (event.title.includes('Confraternização')) classe = 'evento-confraternizacao';
+                else if (event.title.includes('Festa')) classe = 'evento-festa';
+                else if (event.title.includes('Feriado')) classe = 'evento-feriado';
                 else{
                     classe = 'evento';
                 }
