@@ -112,7 +112,7 @@
                 if (document.body.contains(runnerWrapper)) {
                     runnerWrapper.remove();
                 }
-            }, 10000); // 10 segundos
+            }, 10000); // 10 seg
             
         } else if (tipo == 'mae'){
             runnerWrapper.className = 'event-mae-fixo';
@@ -121,7 +121,7 @@
                 if (document.body.contains(runnerWrapper)) {
                     runnerWrapper.remove();
                 }
-            }, 10000); // 10 segundos
+            }, 10000); // 10 seg
 
         } else if (tipo === 'direita-esquerda') {
             runnerWrapper.className = 'event-notification-direita';
@@ -130,7 +130,7 @@
                 if (document.body.contains(runnerWrapper)) {
                     runnerWrapper.remove();
                 }
-            }, 610000); // 10 minutos
+            }, 610000); // 10 min
             
         } else {
             runnerWrapper.className = 'event-notification-esquerda';
@@ -144,9 +144,9 @@
                 if (document.body.contains(runnerWrapper)) {
                     runnerWrapper.remove();
                 }
-            }, 610000); // 10 minutos
+            }, 610000); // 10 min
         }
     }
-    // Loop a cada 5 minutos
+    // 5 min
     setInterval(verificarTodosEventos, 5 * 60 * 1000);
 })();

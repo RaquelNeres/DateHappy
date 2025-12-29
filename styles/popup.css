@@ -69,7 +69,6 @@ h2{
   background-image: url('../gifs/halloween.gif');
 }
 
-/* EFEITOS DA SEMANA */
 #week-events {
   display: flex;
   flex-direction: column;

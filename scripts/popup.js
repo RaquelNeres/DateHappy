@@ -35,9 +35,14 @@ function loadEvents() {
                 event.title = event.title.charAt(0).toUpperCase() + event.title.slice(1);
                 
                 if (event.title === 'Casamento') classe = 'modo-casamento';
-                else if (event.title === 'Aniversário') classe = 'modo-aniversario';
+                else if (event.title === 'Aniversario') classe = 'modo-aniversario';
                 else if (event.title === 'Ano Novo') classe = 'modo-anonovo';
                 else if (event.title === 'Natal') classe = 'modo-natal';
+                else if (event.title === 'Halloween') classe = 'modo-halloween';
+                else if (event.title === 'Pascoa') classe = 'modo-pascoa';
+                else if (event.title === 'Dia das Maes') classe = 'modo-mae';
+                else if (event.title === 'Dia dos Pais') classe = 'modo-pai';
+                else if (event.title === 'Carnaval') classe = 'modo-carnaval';
                 else if (event.title === 'Confraternização') classe = 'evento-confraternizacao';
                 else if (event.title === 'Festa') classe = 'evento-festa';
                 else if (event.title === 'Feriado') classe = 'evento-feriado';

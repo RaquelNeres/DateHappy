@@ -48,11 +48,11 @@
 
 @keyframes runFromLeft {
     0% { 
-        left: -300px;  /* ← Começa fora da tela à ESQUERDA */
+        left: -300px; 
         opacity: 1;
     }
     1.64% {
-        left: 110vw;  /* ← Termina fora da tela à DIREITA */
+        left: 110vw; 
         opacity: 1;
     }
     1.65% {
@@ -80,11 +80,11 @@
 
 @keyframes runFromRight {
     0% { 
-        right: -300px;  /* ← Começa fora da tela à DIREITA */
+        right: -300px;  
         opacity: 1;
     }
     1.64% {
-        right: 110vw;  /* ← Termina fora da tela à ESQUERDA */
+        right: 110vw; 
         opacity: 1;
     }
     1.65% {
@@ -97,11 +97,9 @@
     }
 }
 
-/* Estilos compartilhados */
 .event-speech {
     background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
     color: #000000;
-    /* border: 3px solid currentColor; */
     border-radius: 20px;
     padding: 8px 16px;
     font-weight: bold;
@@ -110,17 +108,7 @@
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     white-space: nowrap;
     position: relative;
-    animation: pulse 2s ease-in-out infinite;
 }
-
-/* @keyframes pulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.05);
-    }
-} */
 
 .event-speech::after {
     content: '';
@@ -139,21 +127,10 @@
     width: 120px;
     height: auto;
     filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
-    /* animation: bounce 1s ease-in-out 3; */
 }
 
 .event-mae-fixo img {
-    width: 180px;  /* Tamanho reduzido (o padrão dos outros é 120px) */
+    width: 180px; 
     height: auto;
     filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
-    /* Se quiser animação, descomente abaixo: */
-    /* animation: bounce 1s ease-in-out 3; */
 }
-/* @keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-} */
