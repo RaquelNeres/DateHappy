@@ -1,5 +1,11 @@
 var calendar;
 
+function capitalize(str) {
+  return str.split(' ')
+    .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(' ');
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   var calendarEl = document.getElementById('calendar');
 
@@ -13,52 +19,11 @@ document.addEventListener('DOMContentLoaded', function() {
       center: 'title',
       right: 'dayGridMonth,timeGridWeek,timeGridDay'
     },
-    editable: false,
-    selectable: false,
+    editable: true ,
     events: [
-    //   {
-    //     title: 'Ano Novo',
-    //     start: '2025-12-07',
-    //     end: '2025-12-10'
-    //   },
-    //   {
-    //     groupId: '999',
-    //     title: 'Repeating Event',
-    //     start: '2025-12-09T16:00:00'
-    //   },
-    //   {
-    //     groupId: '999',
-    //     title: 'Repeating Event',
-    //     start: '2025-12-16T16:00:00'
-    //   },
-    //   {
-    //     title: 'Conference',
-    //     start: '2025-12-11',
-    //     end: '2025-12-13'
-    //   },
-    //   {
-    //     title: 'Meeting',
-    //     start: '2025-12-12T10:30:00',
-    //     end: '2025-12-12T12:30:00'
-    //   },
-    //   {
-    //     title: 'Lunch',
-    //     start: '2025-12-12T12:00:00'
-    //   },
-    //   {
-    //     title: 'Meeting',
-    //     start: '2025-12-12T14:30:00'
-    //   },
-    //   {
-    //     title: 'Birthday Party',
-    //     start: '2025-12-13T07:00:00'
-    //   },
-    //   {
-    //     title: 'Click for Google',
-    //     url: 'https://google.com/',
-    //     start: '2025-12-28'
-    //   }
+
     ],
+    
     eventClick: function(info) {
       if (confirm(`Deseja excluir "${info.event.title}"?`)) {
         info.event.remove();
@@ -66,6 +31,45 @@ document.addEventListener('DOMContentLoaded', function() {
           saveEvents();
         }
       }
+    },
+
+    dateClick: function(info) {
+    let title = prompt('Nome do evento:');
+    
+      if (title) {
+        calendar.addEvent({
+          title: capitalize(title),
+          start: info.dateStr,
+          allDay: info.allDay
+        });
+        if (typeof saveEvents === 'function') {
+            saveEvents();
+          }
+      }
+    },
+
+    eventDrop: function(info) {
+      if (typeof saveEvents === 'function') {
+        saveEvents();
+      }
+    },
+
+    eventResize: function(info) {
+      if (typeof saveEvents === 'function') {
+        saveEvents();
+      }
+    },
+
+    eventMouseEnter: function(info) {
+      info.el.style.transform = 'scale(1.02)';
+      info.el.style.transition = 'transform 0.2s';
+      info.el.style.cursor = 'pointer';
+      info.el.style.boxShadow = '0 4px 8px rgba(0,0,0,0.3)';
+    },
+
+    eventMouseLeave: function(info) {
+      info.el.style.transform = 'scale(1)';
+      info.el.style.boxShadow = 'none';
     }
   });
 

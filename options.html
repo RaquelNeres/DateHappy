@@ -7,9 +7,51 @@
     <title>Pagina Web</title>
 </head>
 <body>
-    <img id="options" src="images/list.png"/>
+    <img id="options" src="images/help.png"/>
+
+    <div style="display: none;" id="oculto">
+        <div>
+            <img src="images/icon_64.png" alt="DateHappy" />
+
+            <h2>Como usar a extensão DateHappy</h2>
+
+            <p>
+                A DateHappy foi feita para ser simples e rápida de usar.
+                Você pode gerenciar seus eventos direto no calendário, sem complicação.
+            </p>
+
+            <h3>➕ Adicionar evento</h3>
+            <p>
+                Para adicionar um evento, basta clicar sobre a data desejada no calendário.
+                Se preferir, você também pode adicionar usando o formulário logo abaixo do calendário.
+                Ao clicar na data, um alerta de confirmação será exibido.
+            </p>
+
+            <h3>🗑️ Excluir evento</h3>
+            <p>
+                Para excluir um evento, clique sobre o evento na data em que ele está.
+                Um alerta de confirmação aparecerá perguntando se deseja realmente excluir.
+            </p>
+
+            <h3>✏️ Modificar ou mover evento</h3>
+            <p>
+                Você pode mover um evento de uma data para outra apenas arrastando
+                o evento até a data desejada no calendário.
+            </p>
+
+            <h3>⏰ Eventos com horário</h3>
+            <p>
+                Para adicionar eventos com horário, utilize as visualizações
+                <strong>week</strong> ou <strong>day</strong>.
+                Clique na data ou no horário desejado e o processo será o mesmo
+                de adicionar um evento no calendário mensal.
+            </p>
+        </div>
+    </div>
 
     <h1 style="text-align: center;">📅 DateHappy</h1>
+
+    <div id='calendar'></div>
 
     <h2>Add Data</h2>
     <input type="date" id="date">
@@ -28,10 +70,8 @@
 
     <button id="add">Adicionar</button>
 
-    <div id='calendar'></div>
-
     <script src="scripts/index.global.min.js"></script>
     <script src="scripts/fullcalendar.js"></script>
-    <script src="scripts/options.js" defer></script>
+    <script src="scripts/options.js"></script>
 </body>
 </html>

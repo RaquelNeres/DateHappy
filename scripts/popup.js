@@ -32,7 +32,7 @@ function loadEvents() {
         else if (diasDif > 0 && diasDif < 7) {
             if (containerSemana) {
                 let classe = '';
-                event.title = event.title.charAt(0).toUpperCase() + event.title.slice(1)
+                event.title = event.title.charAt(0).toUpperCase() + event.title.slice(1);
                 
                 if (event.title === 'Casamento') classe = 'modo-casamento';
                 else if (event.title === 'Aniversário') classe = 'modo-aniversario';
@@ -59,6 +59,7 @@ function loadEvents() {
     }
     if (containerSemana.innerText === "") {
         containerSemana.textContent = "Nada planejado para os próximos dias.";
+        containerSemana.classList = 'evento-week';
     }
 
     Datas();
@@ -69,34 +70,46 @@ function Datas() {
     const container = document.getElementById('today-events');
     
     if (!container) return;
-    const textoConteudo = container.innerText.toLocaleLowerCase().replaceAll(' ', '');
+    const textoConteudo = container.innerText.charAt(0).toUpperCase() + container.innerText.slice(1);
     container.classList.add('gifs');
 
-    if (textoConteudo.includes('natal')) {
+    if (textoConteudo.includes('Natal')) {
         container.classList.add('modo-natal');
         container.textContent = "";
-    } else if (textoConteudo.includes('casamento')) {
-        container.classList.add('modo-casamento');
-        container.textContent = "";
-    } else if (textoConteudo.includes('feriado')) {
-        container.classList.add('modo-feriado');
-        container.textContent = "";
-    } else if (textoConteudo.includes('festa')) {
-        container.classList.add('modo-festa');
-        container.textContent = "";
-    } else if (textoConteudo.includes('ano novo')) {
-        container.classList.add('modo-anoNovo');
-        container.textContent = "";
-    } else if (textoConteudo.includes('confraternização')) {
-        container.classList.add('modo-confraternizacao');
-        container.textContent = "";
-    } else if (textoConteudo.includes('aniversario')) {
-        container.classList.add('modo-aniversario');
-        container.textContent = "";
-    } else if (textoConteudo.includes('carnaval')) {
+    } else if (textoConteudo.includes('Carnaval')) {
         container.classList.add('modo-carnaval');
         container.textContent = "";
-    }
+    } else if (textoConteudo.includes('Dia Das Maes')) {
+        container.classList.add('modo-mae');
+        container.textContent = "";
+    } else if (textoConteudo.includes('Dia Dos Pais')) {
+        container.classList.add('modo-pai');
+        container.textContent = "";
+    } else if (textoConteudo.includes('Ano Novo')) {
+        container.classList.add('modo-anonovo');
+        container.textContent = "";
+    } else if (textoConteudo.includes('Pascoa')) {
+        container.classList.add('modo-pascoa');
+        container.textContent = "";
+    } else if (textoConteudo.includes('Halloween')) {
+        container.classList.add('modo-halloween');
+        container.textContent = "";
+    } else if (textoConteudo.includes('Casamento')) {
+        container.classList.add('modo-casamento');
+        container.textContent = "";
+    } else if (textoConteudo.includes('Feriado')) {
+        container.classList.add('evento-feriado');
+        // container.textContent = "";
+    } else if (textoConteudo.includes('Festa')) {
+        container.classList.add('evento-festa');
+        // container.textContent = "";
+    }  else if (textoConteudo.includes('Confraternização')) {
+        container.classList.add('evento-confraternizacao');
+        // container.textContent = "";
+    } else if (textoConteudo.includes('Aniversario')) {
+        container.classList.add('modo-aniversario');
+        container.textContent = "";
+    } 
     else{
         container.style.padding = "30px";
         container.style.color = "white";

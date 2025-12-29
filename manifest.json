@@ -18,16 +18,14 @@
   
   "action": {
     "default_popup": "popup.html",
-    "default_icon": "images/icon_32.png"
+    "default_icon": "images/calendar.png"
   },
 
   "content_scripts": [
     {
       "js": ["scripts/content.js"],
       "css": ["styles/content.css"],
-      "matches": [
-        "<all_urls>"
-      ]
+      "matches": ["<all_urls>"]
     }
   ],
 
@@ -38,7 +36,7 @@
 
   "web_accessible_resources": [
     {
-      "resources": ["gifs/rena.gif"],
+      "resources": ["gifs/*.gif"],
       "matches": ["<all_urls>"]
     }
   ]

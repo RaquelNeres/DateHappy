@@ -5,3 +5,7 @@ Para ter uma ideia inicial usei o guia : [Inicio](https://developer.mozilla.org/
 e o tutorial do chrome: [chrome](https://developer.chrome.com/docs/extensions/get-started?hl=pt-br)
 
 Visualizador de calendario: [fullcalendar](https://fullcalendar.io/docs/initialize-globals)
+
+Integração com Google Calendario: [google-calendar](https://fullcalendar.io/docs/google-calendar)
+
+Docs fullcalendar: [Docs](https://fullcalendar.io/docs)

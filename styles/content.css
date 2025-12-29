@@ -1,67 +1,159 @@
-/* styles/content.css */
-
-.natal-runner {
+.event-notification-fixo {
     position: fixed;
-    bottom: 10px;
-    right: -300px; /* Começa escondido */
-    z-index: 2147483647; /* Máximo Z-Index para ficar por cima de tudo */
+    bottom: 20px;
+    left: 20px;
+    z-index: 2147483647;
     display: flex;
     flex-direction: column;
     align-items: center;
-    pointer-events: none; /* Deixa clicar através da rena */
-    font-family: sans-serif;
-    
-    /* 
-    10s correndo + 600s (10min) de pausa = 610s total
-    */
-    animation: runAcrossScreen 610s linear infinite;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    animation: aparecer 0.5s ease-out;
 }
 
-@keyframes runAcrossScreen {
+.event-mae-fixo {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2147483647;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    animation: aparecer 0.5s ease-out;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.event-notification-esquerda {
+    position: fixed;
+    bottom: 10px;
+    left: -300px; 
+    z-index: 2147483647;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    animation: runFromLeft 610s linear infinite;
+}
+
+@keyframes runFromLeft {
     0% { 
-        right: -300px; 
+        left: -300px;  /* ← Começa fora da tela à ESQUERDA */
         opacity: 1;
     }
-    1.64% { /* 10s de 610s = 1.64% */
-        right: 110vw; 
+    1.64% {
+        left: 110vw;  /* ← Termina fora da tela à DIREITA */
         opacity: 1;
     }
-    1.65% { /* Esconde instantaneamente */
+    1.65% {
+        opacity: 0;
+        left: -300px;
+    }
+    100% {
+        opacity: 0;
+        left: -300px;
+    }
+}
+
+.event-notification-direita {
+    position: fixed;
+    bottom: 10px;
+    right: -300px; 
+    z-index: 2147483647;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    animation: runFromRight 610s linear infinite;
+}
+
+@keyframes runFromRight {
+    0% { 
+        right: -300px;  /* ← Começa fora da tela à DIREITA */
+        opacity: 1;
+    }
+    1.64% {
+        right: 110vw;  /* ← Termina fora da tela à ESQUERDA */
+        opacity: 1;
+    }
+    1.65% {
         opacity: 0;
         right: -300px;
     }
-    100% { /* Fica invisível pelos próximos 10 minutos */
+    100% {
         opacity: 0;
         right: -300px;
     }
 }
 
-.natal-speech {
-    background-color: white;
-    border: 2px solid #333;
-    border-radius: 15px;
-    padding: 5px 10px;
+/* Estilos compartilhados */
+.event-speech {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    color: #000000;
+    /* border: 3px solid currentColor; */
+    border-radius: 20px;
+    padding: 8px 16px;
     font-weight: bold;
-    font-size: 14px;
-    color: #d60000;
-    margin-bottom: 5px;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    font-size: 16px;
+    margin-bottom: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     white-space: nowrap;
+    position: relative;
+    animation: pulse 2s ease-in-out infinite;
 }
 
-/* Triângulo do balão */
-.natal-speech::after {
+/* @keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+} */
+
+.event-speech::after {
     content: '';
     position: absolute;
-    bottom: -6px;
+    bottom: -8px;
     left: 50%;
     transform: translateX(-50%);
-    border-width: 6px 6px 0;
+    border-width: 8px 8px 0;
     border-style: solid;
-    border-color: #333 transparent transparent transparent;
+    border-color: #ffffff transparent transparent transparent;
 }
 
-.natal-runner img {
+.event-notification-fixo img,
+.event-notification-direita img,
+.event-notification-esquerda img {
     width: 120px;
     height: auto;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+    /* animation: bounce 1s ease-in-out 3; */
 }
+
+.event-mae-fixo img {
+    width: 180px;  /* Tamanho reduzido (o padrão dos outros é 120px) */
+    height: auto;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+    /* Se quiser animação, descomente abaixo: */
+    /* animation: bounce 1s ease-in-out 3; */
+}
+/* @keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+} */

@@ -1,6 +1,6 @@
 #calendar{
-    margin-left: 100px;
-    margin-right: 100PX;
+    margin-left: 150px;
+    margin-right: 150PX;
 }
 
 #options {
@@ -12,27 +12,64 @@
 }
 
 #oculto {
-    background-color: #333333;
     position: fixed;
-    padding: 70px;
-    padding-bottom: 100%;
-    top: 0%;
-    left: 0%;
-    margin-left: 0%;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+
+    background-color: rgba(0, 0, 0, 0.85);
+    color: #ffffff;
+
     z-index: 9999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#oculto > div {
+    background-color: #333333;
+    padding: 40px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+
+    overflow-y: auto;
+
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
 }
 
 #oculto h2 {
-    border-top: 20px;
-    color: white;
-    font-size: 20px;
+    font-size: 22px;
+    margin-bottom: 20px;
     text-align: center;
+}
+
+#oculto h3 {
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+#oculto p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #dddddd;
 }
 
 #oculto img {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 20px;
+    margin: 0 auto 20px;
     width: 90px;
+}
+
+
+@media screen and (max-width: 1000px) {
+    #calendar{
+        margin-left: 10px;
+        margin-right: 10px;
+        height: 700px;
+    }
 }
