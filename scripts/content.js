@@ -12,33 +12,21 @@
     function verificarEvento(event, agora) {
         const dataEvento = new Date(event.start);
         
-        if (isMesmoDia(dataEvento, agora, event.recorrente) && event.allDay) {
+        if (isMesmoDia(dataEvento, agora) && event.allDay) {
             const config = getNotificationConfig(event.title);
             if (config) {
-                const idNotificacao = `dia-${event.title}-${agora.getDate()}`;
+                const idNotificacao = `dia-${event.title}-${dataEvento.getDate()}`;
                 mostrarNotificacao(config, idNotificacao, config.tipo || 'esquerda-direita');
             }
         }
-
-        let dataParaCalculo = new Date(event.start);
-        if (event.recorrente) {
-            dataParaCalculo.setFullYear(agora.getFullYear());
-            dataParaCalculo.setMonth(dataEvento.getMonth());
-            dataParaCalculo.setDate(dataEvento.getDate());
-        }
         
-        verificarLembreteHora({ ...event, start: dataParaCalculo }, agora);
+        verificarLembreteHora(event, agora);
     }
 
-    function isMesmoDia(data1, data2, isRecorrente) {
-        const mesmoDia = data1.getDate() === data2.getDate();
-        const mesmoMes = data1.getMonth() === data2.getMonth();
-
-        if (isRecorrente) {
-            return mesmoDia && mesmoMes; 
-        } else {
-            return mesmoDia && mesmoMes && (data1.getFullYear() === data2.getFullYear());
-        }
+    function isMesmoDia(data1, data2) {
+        return data1.getDate() === data2.getDate() &&
+               data1.getMonth() === data2.getMonth() &&
+               data1.getFullYear() === data2.getFullYear();
     }
 
     function verificarLembreteHora(event, agora) {
@@ -109,10 +97,6 @@
         const speechBubble = document.createElement('div');
         speechBubble.className = 'event-speech';
         speechBubble.innerText = config.mensagem;
-
-        if (config.cor) {
-            speechBubble.style.color = config.cor;
-        }
 
         const img = document.createElement('img');
         img.src = chrome.runtime.getURL(`gifs/${config.gif}`);
